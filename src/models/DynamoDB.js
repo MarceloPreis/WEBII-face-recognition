@@ -32,10 +32,9 @@ module.exports = class Controller {
         return response.Item || false;
     }
 
-    async list(tableName) {
+    async list(tableName) {  
         const command = new ScanCommand({
-            ProjectionExpression: this.model.attributes().implode(','),
-            TableName: this.tableName,
+            TableName: tableName,
         });
 
         const response = await docClient.send(command);

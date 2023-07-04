@@ -33,7 +33,7 @@ router.post('/person', auth, async (req, res) => {
     res.send(response);
 });
 
-router.post('/person/list', auth, async (req, res) => {
+router.get('/persons', auth, async (req, res) => {
     const response = await (new PersonController()).list();
     res.send(response);
 });

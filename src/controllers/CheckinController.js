@@ -12,6 +12,9 @@ module.exports = class CheckinController extends Controller {
 
     async findMatch(file) {
         const match = await rekognitionFindMatch(file);
+        if (!match) 
+        	return "Rosto não encontrado";
+            
         const person = await (new FaceController()).facePerson(match.Face.FaceId)
         return { face: match.Face, person: person };
     }
